@@ -4,7 +4,9 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import org.hibernate.dialect.PostgreSQLIntervalSecondJdbcType;
+
+import java.util.Date;
+
 
 @Entity
 public class Task {
@@ -15,13 +17,13 @@ public class Task {
 
     private String description;
 
-    private PostgreSQLIntervalSecondJdbcType time;
+    private Date date;
 
     public Task() {}
 
-    public Task(String description, PostgreSQLIntervalSecondJdbcType time) {
+    public Task(String description, Date date) {
         this.description = description;
-        this.time = time;
+        this.date = date;
     }
 
     public Long getId() {
@@ -40,11 +42,11 @@ public class Task {
         this.description = description;
     }
 
-    public PostgreSQLIntervalSecondJdbcType getTime() {
-        return time;
+    public Date getDate() {
+        return date;
     }
 
-    public void setTime(PostgreSQLIntervalSecondJdbcType time) {
-        this.time = time;
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
