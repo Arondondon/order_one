@@ -18,9 +18,9 @@
         <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">ФИО</th>
-                <th scope="col">Задача</th>
-                <th scope="col">Крайний срок</th>
+                <th scope="col">Full name</th>
+                <th scope="col">Task</th>
+                <th scope="col">Deadline</th>
             </tr>
         </thead>
         <tbody th:each="task : ${tasks}">
@@ -38,7 +38,7 @@
         </tbody>
     </table>
 
-    <form action="/add" method="post">
+    <form action="/add" method="post" class="alert bg-secondary mt-2 text-white">
         <select name="person" class="form-select mb-4" aria-label="Default select example">
             <div th:each="person : ${persons}">
                 <option th:value="${person.id}" th:text="${person.fullName}"/>
@@ -49,7 +49,7 @@
         <button type="submit" class="btn btn-dark">Add</button>
     </form>
 
-    <form action="/change" method="post">
+    <form action="/change" method="post" class="alert bg-secondary mt-2 mb-5 text-white">
         <input type="number" name="id" placeholder="Enter a task id" class="form-control"><br>
         <select name="person" class="form-select mb-4" aria-label="Default select example">
             <div th:each="person : ${persons}">
@@ -57,7 +57,7 @@
             </div>
         </select>
         <textarea name="description" placeholder="Enter description of task" class="form-control"></textarea><br>
-        <input type="date" name="date" placeholder="Enter a task deadline" class="form-control"><br>
+        <input type="datetime-local" name="date" placeholder="Enter a task deadline" class="form-control"><br>
         <button type="submit" class="btn btn-dark">Change</button>
     </form>
 

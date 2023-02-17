@@ -54,6 +54,7 @@ public class MainController {
         if(personTaskRepo.existsById(id)) {
             PersonTask personTask = personTaskRepo.findById(id).get();
             personTaskRepo.delete(personTask);
+            taskRepo.delete(personTask.getTask());
             personTask.setPerson(person);
             if(!(personTask.getTask().getDescription().equals(description) && personTask.getTask().getDate().equals(date))){
                 Task task = new Task(description, date);
@@ -70,8 +71,8 @@ public class MainController {
     public String add(@PathVariable(value = "id")Long id, Model model){
 
         PersonTask personTask = personTaskRepo.findById(id).get();
-        taskRepo.delete(personTask.getTask());
         personTaskRepo.delete(personTask);
+        taskRepo.delete(personTask.getTask());
 
         return "redirect:/";
     }
